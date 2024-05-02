@@ -54,12 +54,11 @@ public class UserService {
         userRepository.save(existingUser);
     }
 
-    public String checkValidUser(UserDto userDto) {
+    public UserDto checkValidUser(UserDto userDto) {
         User validatedUser = userRepository.findUserByUserNameAndPassword(userDto.getUserName(), userDto.getPassword());
         if (validatedUser != null) {
-            //return mapUserToUserDto(validatedUser);
-            return "Login Successful!!";
+            return mapUserToUserDto(validatedUser);
         }
-        return "User Name or Password is incorrect!!";
+        return userDto;
     }
 }

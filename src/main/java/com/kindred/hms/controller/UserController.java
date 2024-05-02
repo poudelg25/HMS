@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/v1/users")
 public class UserController {
 
@@ -41,7 +42,8 @@ public class UserController {
    }
 
     @PostMapping("/login")
-    public ResponseEntity<String> checkValidUser(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> checkValidUser(@RequestBody UserDto userDto){
+        System.err.println("Checking valid User!!!");
         return ResponseEntity.ok(userService.checkValidUser(userDto));
     }
 }
