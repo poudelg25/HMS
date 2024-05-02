@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: Kindred hms
+  profiles:
+    active: localdev
+
