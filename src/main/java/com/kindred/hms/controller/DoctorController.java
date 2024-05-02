@@ -55,7 +55,7 @@ public class DoctorController {
     public ResponseEntity<String> deleteDoctor(@PathVariable("id") Long doctorId) {
         //doctorService.deleteDoctor(doctorId);
         //return ResponseEntity.ok().body("Doctor record (ID: "+doctorId+") deleted successfully!!");
-        return ResponseEntity.ok().body( doctorService.deleteDoctor(doctorId));
+        return ResponseEntity.ok().body( doctorService.deleteDoctorById(doctorId));
     }
 
 }

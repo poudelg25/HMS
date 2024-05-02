@@ -24,7 +24,7 @@ public class AppointmentController {
     @PostMapping
     public ResponseEntity<String> addAppointment(@RequestBody AppointmentDto appointmentDto) {
         appointmentService.saveAppointment(appointmentDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Appointment record (ID: "+appointmentDto.getAppointmentId()+") created successfully!!");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Appointment record (ID: " + appointmentDto.getAppointmentId() + ") created successfully!!");
     }
 
     @GetMapping
@@ -38,15 +38,14 @@ public class AppointmentController {
     }
 
     @PutMapping("/{appointmentId}")
-    public ResponseEntity<String> updateAppointment(@PathVariable("appointmentId") Long appointmentId, @RequestBody AppointmentDto appointmentDto){
+    public ResponseEntity<String> updateAppointment(@PathVariable("appointmentId") Long appointmentId, @RequestBody AppointmentDto appointmentDto) {
         appointmentService.updateAppointment(appointmentId, appointmentDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Appointment record (ID: "+appointmentId+") updated successfully!!");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Appointment record (ID: " + appointmentId + ") updated successfully!!");
     }
 
     @DeleteMapping("/{appointmentId}")
     public ResponseEntity<String> deleteAppointment(@PathVariable("appointmentId") Long appointmentId) {
-        appointmentService.deleteAppointment(appointmentId);
-        return ResponseEntity.ok().body("Appointment record (ID: "+appointmentId+") deleted successfully!!");
+        return ResponseEntity.ok().body(appointmentService.deleteAppointment(appointmentId));
     }
 
 

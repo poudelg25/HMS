@@ -28,5 +28,10 @@ public class GlobalExceptionHandling extends RuntimeException{
         return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException e) {
+        return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
+    }
+
 }
 

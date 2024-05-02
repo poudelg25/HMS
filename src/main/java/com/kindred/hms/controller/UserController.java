@@ -21,8 +21,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody UserDto userDto) {
-       userService.saveUser(userDto);
-       return ResponseEntity.ok("User Created Successfully!!");
+       return ResponseEntity.ok(userService.saveUser(userDto));
    }
 
    @GetMapping("/id")
@@ -36,15 +35,13 @@ public class UserController {
        return ResponseEntity.status(HttpStatus.CREATED).body("User with ID: "+userId+") updated successfully!!");
    }
 
-   @DeleteMapping
-    public ResponseEntity<String> deleteUser(@RequestParam("id") Long userId) {
-        userService.deleteUserById(userId);
-       return ResponseEntity.ok("User Deleted Successfully!!");
+   @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId) {
+       return ResponseEntity.ok(userService.deleteUserById(userId));
    }
 
     @PostMapping("/login")
-    public ResponseEntity<UserDto> checkValidUser(@RequestBody UserDto userDto){
-        System.err.println("Checking valid user....");
-        return ResponseEntity.ok(this.userService.checkValidUser(userDto));
+    public ResponseEntity<String> checkValidUser(@RequestBody UserDto userDto){
+        return ResponseEntity.ok(userService.checkValidUser(userDto));
     }
 }
